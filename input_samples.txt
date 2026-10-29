@@ -1,0 +1,47 @@
+// =========================================================================
+// INTERMEDIATE CODE GENERATOR - TEST SAMPLES & BENCHMARKS
+// =========================================================================
+// This file contains curated source code snippets designed to test and
+// demonstrate all intermediate code representations (3AC, Quadruples, Triples)
+// and compiler optimizations during faculty evaluation.
+// =========================================================================
+
+// TEST CASE 1: Standard Arithmetic Expression with Nested Precedence
+// Tests precedence: multiplication/division evaluated before addition/subtraction
+result = p + q * r - (s / t + 10);
+
+// TEST CASE 2: Multi-step Computation with Logical & Relational Operators
+// Generates boolean 3-address codes for conditional testing
+a = 25;
+b = 50;
+c = a * 2 + b / 5;
+isValid = (c >= 60) && (a != b);
+
+// TEST CASE 3: Conditional Branching (If - Else)
+// Demonstrates generation of temporary relational flags and jump labels (L1, L2)
+if (x > y) {
+    maxVal = x;
+    status = 1;
+} else {
+    maxVal = y;
+    status = 0;
+}
+
+// TEST CASE 4: Iterative Loop (While Construct)
+// Demonstrates back-edge jumps, loop-header labels, and conditional exits
+counter = 0;
+sum = 0;
+while (counter < 5) {
+    sum = sum + counter * 2;
+    counter = counter + 1;
+}
+
+// TEST CASE 5: Constant Folding & Algebraic Simplifications
+// Tests compile-time evaluation of pure constant arithmetic:
+// 15 + 25 * 2 => 15 + 50 => 65
+// x * 0 => 0
+// y * 1 => y
+// z + 0 => z
+foldedConstant = 15 + 25 * 2;
+identityResult = (m * 0) + (n * 1) + (k + 0);
+combined = foldedConstant - 5;
